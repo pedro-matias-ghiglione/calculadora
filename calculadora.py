@@ -4,38 +4,54 @@ logging.basicConfig(filename='calculadora.log', level=logging.INFO)
 
 class Calculadora:
     #Clase para operaciones matematicas    
-
-    def decorador_registro(method):
+    
+    #Decoradores
     # Registro de actividades en el LOG 
+    def decorador_log(method):
         def loggeo(*args, **kwargs):
-            logger = logging.getLogger(method.__qualname__)
-            logger.info(f"Argumentos: {args[1]},{args[2]} ")
-            return method(*args, **kwargs)
+            #Primero genera el resultado de la opracion
+            resultado = method(*args, **kwargs)
+            #Guarda en log los parametros y el resultado
+            logger = logging.getLogger()
+            logger.info(f"La {method.__name__} de {args[1]}y {args[2]} es igual a {resultado}")
+            return resultado
         return loggeo
     
-    @decorador_registro
-    def sumar(self, num1, num2):
+    #Metodos
+    @decorador_log
+    def suma(self, num1, num2):
         #Suma de numeros
-        resultado = num1 + num2
-        return resultado
+        try:
+            resultado = num1 + num2
+            return resultado
+        except:
+            return "Error al sumar"
     
-    @decorador_registro
-    def restar(self, num1, num2):
+    @decorador_log
+    def resta(self, num1, num2):
         #Resta de numeros
-        resultado = num1 - num2
-        return resultado
+        try:
+            resultado = num1 - num2
+            return resultado
+        except:
+            return "Error al restar"
 
-    @decorador_registro
-    def multiplicar(self, num1, num2):
+    @decorador_log
+    def multiplicacion(self, num1, num2):
         #Multiplicacion de numeros
-        resultado = num1 * num2
-        return resultado
+        try:
+            resultado = num1 * num2
+            return resultado
+        except:
+            return "Error al multiplicar"
 
-    @decorador_registro
-    def dividir(self, num1, num2):
+    @decorador_log
+    def division(self, num1, num2):
         #Division de numeros
         try:
             resultado = num1 / num2
             return resultado
         except ZeroDivisionError:
             return "Error de division por cero"
+        except:
+            return "Error al dividir"

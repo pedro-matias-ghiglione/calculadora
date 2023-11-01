@@ -1,4 +1,4 @@
-from calculadoraculadora import Calculadora
+from calculadora import Calculadora
 from sistemaCalculadora import SistemaCalculadora
 
 #Inicializacion de clases de la aplicacion
@@ -14,28 +14,39 @@ parametro2=False
 #Bucle de sistema
 while (salir == False):
     opcion = sistemaCentral.menu_principal()
+
+    #Ingreso de datos para el calculo
     if opcion != "verhistorial" and opcion != "salir":
-        #Ingreso de datos para el calculo
         sistemaCentral.mensaje_ingreso_parametro()
         parametro1 = int(input())
         sistemaCentral.mensaje_ingreso_parametro()
         parametro2 = int(input())
 
     if opcion == "suma":
-        sistemaCentral.mensaje_resultado_operacion(opcion,calculadora.sumar(parametro1,parametro2))
+        sistemaCentral.mensaje_resultado_operacion(opcion,calculadora.suma(parametro1,parametro2))
+        #Pregunta si quiere salir del sistema
+        salir = sistemaCentral.mensaje_salida_sistema()
 
     if opcion == "resta":
-        sistemaCentral.mensaje_resultado_operacion(opcion,calculadora.restar(parametro1,parametro2))
+        sistemaCentral.mensaje_resultado_operacion(opcion,calculadora.resta(parametro1,parametro2))
+        #Pregunta si quiere salir del sistema
+        salir = sistemaCentral.mensaje_salida_sistema()
 
     if opcion == "multiplicacion":
-        sistemaCentral.mensaje_resultado_operacion(opcion,calculadora.multiplicar(parametro1,parametro2))
+        sistemaCentral.mensaje_resultado_operacion(opcion,calculadora.multiplicacion(parametro1,parametro2))
+        #Pregunta si quiere salir del sistema
+        salir = sistemaCentral.mensaje_salida_sistema()
 
     if opcion == "division":
-        sistemaCentral.mensaje_resultado_operacion(opcion,calculadora.dividir(parametro1,parametro2))
+        sistemaCentral.mensaje_resultado_operacion(opcion,calculadora.division(parametro1,parametro2))
+        #Pregunta si quiere salir del sistema
+        salir = sistemaCentral.mensaje_salida_sistema()
 
     if opcion == "verhistorial":
-        pass
+        #Pregunta si quiere salir del sistema
+        salir = sistemaCentral.mensaje_salida_sistema()
     
     if opcion == "salir":
-        salir = True
-        sistemaCentral.mensaje_salida_sistema()
+        #Vuelve a preguntar si quiere salir del sistema
+        salir = sistemaCentral.mensaje_salida_sistema()
+sistemaCentral.mensaje_cierre_sistema()
