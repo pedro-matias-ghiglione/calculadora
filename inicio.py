@@ -1,9 +1,9 @@
-from calculadora import Calculadora
+from calculadoraculadora import Calculadora
 from sistemaCalculadora import SistemaCalculadora
 
 #Inicializacion de clases de la aplicacion
-cal = Calculadora()
-siscal = SistemaCalculadora()
+calculadora = Calculadora()
+sistemaCentral = SistemaCalculadora()
 
 #Inicializacion de variables de la aplicacion
 salir = False
@@ -11,31 +11,31 @@ opcion = False
 parametro1=False
 parametro2=False
 
-#Sistema
+#Bucle de sistema
 while (salir == False):
-    opcion = siscal.menu_principal()
+    opcion = sistemaCentral.menu_principal()
     if opcion != "verhistorial" and opcion != "salir":
         #Ingreso de datos para el calculo
-        siscal.mensaje_ingreso_parametro()
+        sistemaCentral.mensaje_ingreso_parametro()
         parametro1 = int(input())
-        siscal.mensaje_ingreso_parametro()
+        sistemaCentral.mensaje_ingreso_parametro()
         parametro2 = int(input())
 
     if opcion == "suma":
-        siscal.mensaje_resultado_operacion(opcion,cal.sumar(parametro1,parametro2))
+        sistemaCentral.mensaje_resultado_operacion(opcion,calculadora.sumar(parametro1,parametro2))
 
     if opcion == "resta":
-        siscal.mensaje_resultado_operacion(opcion,cal.restar(parametro1,parametro2))
+        sistemaCentral.mensaje_resultado_operacion(opcion,calculadora.restar(parametro1,parametro2))
 
     if opcion == "multiplicacion":
-        siscal.mensaje_resultado_operacion(opcion,cal.multiplicar(parametro1,parametro2))
+        sistemaCentral.mensaje_resultado_operacion(opcion,calculadora.multiplicar(parametro1,parametro2))
 
     if opcion == "division":
-        siscal.mensaje_resultado_operacion(opcion,cal.dividir(parametro1,parametro2))
+        sistemaCentral.mensaje_resultado_operacion(opcion,calculadora.dividir(parametro1,parametro2))
 
     if opcion == "verhistorial":
         pass
     
     if opcion == "salir":
         salir = True
-        siscal.mensaje_salida_sistema()
+        sistemaCentral.mensaje_salida_sistema()

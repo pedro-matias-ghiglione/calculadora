@@ -5,7 +5,6 @@ logging.basicConfig(filename='calculadora.log', level=logging.INFO)
 class Calculadora:
     #Clase para operaciones matematicas    
 
-
     def decorador_registro(method):
     # Registro de actividades en el LOG 
         def loggeo(*args, **kwargs):
@@ -35,7 +34,8 @@ class Calculadora:
     @decorador_registro
     def dividir(self, num1, num2):
         #Division de numeros
-        resultado = num1 / num2
-        return resultado
-    
-
+        try:
+            resultado = num1 / num2
+            return resultado
+        except ZeroDivisionError:
+            return "Error de division por cero"
