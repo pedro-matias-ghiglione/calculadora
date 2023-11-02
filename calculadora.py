@@ -7,7 +7,7 @@ class Calculadora:
     #Constructor
     def __init__(self):
         self.archivoLog = "calculadora.log"
-        logging.basicConfig(filename=self.archivo_log, level=logging.INFO)
+        logging.basicConfig(filename=self.archivoLog, level=logging.INFO)
 
     #Decoradores
     # Registro de actividades en el LOG 
