@@ -1,10 +1,14 @@
 import logging
 
-logging.basicConfig(filename='calculadora.log', level=logging.INFO)
 
 class Calculadora:
     #Clase para operaciones matematicas    
     
+    #Constructor
+    def __init__(self):
+        self.archivoLog = "calculadora.log"
+        logging.basicConfig(filename=self.archivo_log, level=logging.INFO)
+
     #Decoradores
     # Registro de actividades en el LOG 
     def decorador_log(method):
@@ -55,3 +59,12 @@ class Calculadora:
             return "Error de division por cero"
         except:
             return "Error al dividir"
+        
+    def verhistorial(self):
+        #Abrir archivo de log
+        with open(self.archivoLog, 'r') as archivoLog:
+            lineas = archivoLog.readlines()
+        
+        for linea in lineas:
+            #Mostrar en pantalla el contenido del log
+            print(linea, end='')

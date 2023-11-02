@@ -21,7 +21,6 @@ while (salir == False):
         parametro1 = int(input())
         sistemaCentral.mensaje_ingreso_parametro()
         parametro2 = int(input())
-
     if opcion == "suma":
         sistemaCentral.mensaje_resultado_operacion(opcion,calculadora.suma(parametro1,parametro2))
         #Pregunta si quiere salir del sistema
@@ -43,6 +42,7 @@ while (salir == False):
         salir = sistemaCentral.mensaje_salida_sistema()
 
     if opcion == "verhistorial":
+        calculadora.verhistorial()
         #Pregunta si quiere salir del sistema
         salir = sistemaCentral.mensaje_salida_sistema()
     
