@@ -1,16 +1,20 @@
+"""
+      Este modulo contiene las operaciones matematicas para realizar. Tambien 
+      muestra el historial.
+"""
 import logging
 
 
 class Calculadora:
-    # Clase para operaciones matematicas
+    """Clase para operaciones matematicas"""
     # Constructor
     def __init__(self):
-        self.archivoLog = "calculadora.log"
-        logging.basicConfig(filename=self.archivoLog, level=logging.INFO)
+        self.archivolog = "calculadora.log"
+        logging.basicConfig(filename=self.archivolog, level=logging.INFO)
 
     # Decoradores
-    # Registro de actividades en el LOG
     def decorador_log(method):
+        """Registro de actividades en el LOG"""
         def loggeo(*args, **kwargs):
             # Primero genera el resultado de la opracion
             resultado = method(*args, **kwargs)
@@ -23,47 +27,44 @@ class Calculadora:
     # Metodos
     @decorador_log
     def suma(self, num1, num2):
-        # Suma de numeros
+        """Suma de dos numeros"""
         try:
             resultado = num1 + num2
             return resultado
-        except Exception:
+        except ValueError:
             return "Error al sumar"
 
     @decorador_log
     def resta(self, num1, num2):
-        # Resta de numeros
+        """Resta de dos numeros"""
         try:
             resultado = num1 - num2
             return resultado
-        except Exception:
+        except ValueError:
             return "Error al restar"
 
     @decorador_log
     def multiplicacion(self, num1, num2):
-        # Multiplicacion de numeros
+        """Multiplicacion de dos numeros"""
         try:
             resultado = num1 * num2
             return resultado
-        except Exception:
+        except ValueError:
             return "Error al multiplicar"
 
     @decorador_log
     def division(self, num1, num2):
-        # Division de numeros
+        """Division de dos numeros"""
         try:
             resultado = num1 / num2
             return resultado
         except ZeroDivisionError:
             return "Error de division por cero"
-        except Exception:
+        except ValueError:
             return "Error al dividir"
 
     def verhistorial(self):
-        # Abrir archivo de log
-        with open(self.archivoLog, 'r') as archivoLog:
-            lineas = archivoLog.readlines()
-
-        for linea in lineas:
-            # Mostrar en pantalla el contenido del log
-            print(linea, end='')
+        """Muestra el archivo log en pantalla"""
+        with open(self.archivolog, 'r',encoding="utf-8") as archivolog:
+            lineas = archivolog.readlines()
+        return lineas
